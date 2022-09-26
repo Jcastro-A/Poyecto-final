@@ -1,0 +1,28 @@
+{% extends "perfilapp\plantilla_base.html" %}
+
+{% block title %}Bievenido{% endblock %}
+
+{%block content %} 
+
+{% if user.is_authenticated %}
+
+<h1>Hola {{ user.username }}</h1>
+<h1>Tu correo es: {{ user.email }}</h1>
+<div class="col mb-5 mb-5 mb-sm-0">
+  <div class="text-left">
+    <img
+      class="img-fluid mb-2 px-2"
+      style="height: 300px; width: 300px; object-fit: scale-down"
+      src="{{user.avatar.imagen.url}}"
+    />
+  </div>
+</div>
+
+<a href="{% url 'sign_out' %}">Cerrar sesión</a>
+{% else %}
+
+<a href="{% url 'sign_up' %}">Registrate</a>
+<a href="{% url 'sign_in' %}">Iniciar sesión</a>
+{% endif %}
+
+{% endblock content %}

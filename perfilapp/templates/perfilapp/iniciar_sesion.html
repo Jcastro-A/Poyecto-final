@@ -1,0 +1,13 @@
+{% extends "perfilapp\plantilla_base.html" %}
+{% load static %}
+
+{% block title %}Inicia Sesión{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="submit">
+    </form>
+
+{% endblock content %}
